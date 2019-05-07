@@ -23,7 +23,14 @@ final class WebReferenceConverter implements ViewModelConverter
             $origin[] = 'Accessed '.$object->getAccessed()->format();
         }
 
-        $authors = [$this->createAuthors($object->getAuthors(), $object->authorsEtAl(), [$object->getDate()->format().$object->getDiscriminator()])];
+        // hack for missing date
+        if ($object->getDate()->getYear() > 1000) {
+            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
+        } else {
+            $authorsSuffix = [];
+        }
+
+        $authors = [$this->createAuthors($object->getAuthors(), $object->authorsEtAl(), $authorsSuffix)];
 
         return ViewModel\Reference::withOutDoi(new ViewModel\Link($object->getTitle(), $object->getUri()), $origin, $authors);
     }

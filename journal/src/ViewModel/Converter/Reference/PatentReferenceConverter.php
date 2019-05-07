@@ -27,7 +27,14 @@ final class PatentReferenceConverter implements ViewModelConverter
         $origin[] = $object->getPatentType();
         $origin[] = $object->getCountry();
 
-        $authors = [$this->createAuthors($object->getInventors(), $object->inventorsEtAl(), [$object->getDate()->format().$object->getDiscriminator()])];
+        // hack for missing date
+        if ($object->getDate()->getYear() > 1000) {
+            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
+        } else {
+            $authorsSuffix = [];
+        }
+
+        $authors = [$this->createAuthors($object->getInventors(), $object->inventorsEtAl(), $authorsSuffix)];
 
         return ViewModel\Reference::withOutDoi(new ViewModel\Link($title, $object->getUri()), $origin, $authors);
     }

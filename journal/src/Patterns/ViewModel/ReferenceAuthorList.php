@@ -19,7 +19,8 @@ final class ReferenceAuthorList implements CastsToArray
     {
         Assertion::notEmpty($authors);
         Assertion::allIsInstanceOf($authors, Author::class);
-        Assertion::notBlank($suffix);
+        // suffix will be blank when no date is available
+        //Assertion::notBlank($suffix);
 
         $this->authors = $authors;
         $this->suffix = $suffix;

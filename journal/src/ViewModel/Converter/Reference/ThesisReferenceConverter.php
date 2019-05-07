@@ -15,7 +15,14 @@ final class ThesisReferenceConverter implements ViewModelConverter
      */
     public function convert($object, string $viewModel = null, array $context = []) : ViewModel
     {
-        $authors = [new ViewModel\ReferenceAuthorList([ViewModel\Author::asText($object->getAuthor()->getPreferredName())], '('.$object->getDate()->format().$object->getDiscriminator().')')];
+        // hack for missing date
+        if ($object->getDate()->getYear() > 1000) {
+            $yearSuffix = '('.$object->getDate()->format().$object->getDiscriminator().')';
+        } else {
+            $yearSuffix = '';
+        }
+
+        $authors = [new ViewModel\ReferenceAuthorList([ViewModel\Author::asText($object->getAuthor()->getPreferredName())], $yearSuffix)];
 
         $query = [
             'title' => strip_tags($object->getTitle()),

@@ -14,9 +14,13 @@ trait HasAuthors
             return ViewModel\Author::asLink(new ViewModel\Link($author->toString(), 'https://scholar.google.com/scholar?q=%22author:'.urlencode($author->toString()).'%22'));
         }, $authors);
 
-        $suffix = trim(array_reduce(array_filter($suffixes), function (string $carry, string $suffix) {
-            return $carry.' ('.$suffix.')';
-        }, ''));
+        if (count($suffixes)) {
+            $suffix = trim(array_reduce(array_filter($suffixes), function (string $carry, string $suffix) {
+                return $carry.' ('.$suffix.')';
+            }, ''));
+        } else {
+            $suffix = '';
+        }
 
         if ($etAl) {
             $suffix = 'et al. '.$suffix;
