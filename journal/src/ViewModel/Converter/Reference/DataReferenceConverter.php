@@ -43,7 +43,9 @@ final class DataReferenceConverter implements ViewModelConverter
             $year = false;
         }
         if ($object->getAuthors()) {
-            array_unshift($authors, $this->createAuthors($object->getAuthors(), $object->authorsEtAl(), ['authors', $year ? $object->getDate()->format().$object->getDiscriminator() : '']));
+            $referenceAuthors = $this->pruneAuthors($object->getAuthors());
+
+            array_unshift($authors, $this->createAuthors($referenceAuthors, $object->authorsEtAl(), ['authors', $year ? $object->getDate()->format().$object->getDiscriminator() : '']));
         }
 
         if ($object->getDoi()) {

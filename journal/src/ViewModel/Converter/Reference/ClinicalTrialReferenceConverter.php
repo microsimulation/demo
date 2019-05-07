@@ -21,8 +21,9 @@ final class ClinicalTrialReferenceConverter implements ViewModelConverter
         } else {
             $yearSuffix = '';
         }
+        $referenceAuthors = $this->pruneAuthors($object->getAuthors());
 
-        $authors = [$this->createAuthors($object->getAuthors(), $object->authorsEtAl(), [$object->getAuthorsType(), $yearSuffix])];
+        $authors = [$this->createAuthors($referenceAuthors, $object->authorsEtAl(), [$object->getAuthorsType(), $yearSuffix])];
 
         return ViewModel\Reference::withOutDoi(new ViewModel\Link($object->getTitle(), $object->getUri()), [], $authors);
     }

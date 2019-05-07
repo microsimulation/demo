@@ -32,9 +32,11 @@ final class BookReferenceConverter implements ViewModelConverter
             $abstracts[] = new ViewModel\Link('PubMed', 'https://www.ncbi.nlm.nih.gov/pubmed/'.$object->getPmid());
         }
 
+        $referenceAuthors = $this->pruneAuthors($object->getAuthors());
+
         $query = [
             'title' => strip_tags($object->getBookTitle()),
-            'author' => array_map(Callback::method('toString'), $object->getAuthors()),
+            'author' => array_map(Callback::method('toString'), $referenceAuthors),
             'publication_year' => $object->getDate()->getYear(),
             'pmid' => $object->getPmid(),
             'isbn' => $object->getIsbn(),
@@ -49,7 +51,9 @@ final class BookReferenceConverter implements ViewModelConverter
             $authorsSuffix = [];
         }
 
-        if (empty($object->getAuthors())) {
+        if (empty($referenceAuthors) && empty($object->getEditors())) {
+            $authors = [$this->createAuthors($object->getEditors(), $object->editorsEtAl(), [])];
+        } elseif (empty($referenceAuthors)) {
             $authors = [$this->createAuthors($object->getEditors(), $object->editorsEtAl(), array_merge(['editors'], $authorsSuffix))];
         } else {
             $authors = [$this->createAuthors($object->getAuthors(), $object->authorsEtAl(), $authorsSuffix)];

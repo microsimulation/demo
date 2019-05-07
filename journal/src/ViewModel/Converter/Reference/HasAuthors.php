@@ -41,4 +41,18 @@ trait HasAuthors
 
         return $authors;
     }
+
+    private function pruneAuthors(array $authors) : array
+    {
+        // Hack to prune out group authors of name n/a used as a placeholder
+        $referenceAuthors = array();
+        foreach($authors as $referenceAuthor)
+        {
+            if (property_exists($referenceAuthor, 'name') && $referenceAuthor->getName() == 'n/a') {
+                continue;
+            }
+            $referenceAuthors[] = $referenceAuthor;
+        }
+        return $referenceAuthors;
+    }
 }

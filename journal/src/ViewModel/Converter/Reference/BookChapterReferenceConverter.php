@@ -42,7 +42,9 @@ final class BookChapterReferenceConverter implements ViewModelConverter
             $authorsSuffix = [];
         }
 
-        $authors = [$this->createAuthors($object->getAuthors(), $object->authorsEtAl(), $authorsSuffix)];
+        $referenceAuthors = $this->pruneAuthors($object->getAuthors());
+
+        $authors = [$this->createAuthors($referenceAuthors, $object->authorsEtAl(), $authorsSuffix)];
 
         $abstracts = [];
         if ($object->getPmid()) {

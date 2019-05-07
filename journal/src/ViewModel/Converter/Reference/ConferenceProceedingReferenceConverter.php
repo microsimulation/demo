@@ -27,8 +27,9 @@ final class ConferenceProceedingReferenceConverter implements ViewModelConverter
         } else {
             $authorsSuffix = [];
         }
+        $referenceAuthors = $this->pruneAuthors($object->getAuthors());
 
-        $authors = [$this->createAuthors($object->getAuthors(), $object->authorsEtAl(), $authorsSuffix)];
+        $authors = [$this->createAuthors($referenceAuthors, $object->authorsEtAl(), $authorsSuffix)];
 
         $query = [
             'title' => strip_tags($object->getArticleTitle()),

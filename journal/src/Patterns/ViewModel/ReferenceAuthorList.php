@@ -17,7 +17,7 @@ final class ReferenceAuthorList implements CastsToArray
 
     public function __construct(array $authors, string $suffix)
     {
-        Assertion::notEmpty($authors);
+        //Assertion::notEmpty($authors);
         Assertion::allIsInstanceOf($authors, Author::class);
         // suffix will be blank when no date is available
         //Assertion::notBlank($suffix);
