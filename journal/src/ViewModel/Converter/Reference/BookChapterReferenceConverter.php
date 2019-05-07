@@ -36,11 +36,7 @@ final class BookChapterReferenceConverter implements ViewModelConverter
         $origin[] = $object->getPages()->toString();
 
         // hack for missing date
-        if ($object->getDate()->getYear() > 1000) {
-            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
-        } else {
-            $authorsSuffix = [];
-        }
+        $authorsSuffix = $this->createAuthorsSuffix($object);
 
         $referenceAuthors = $this->pruneAuthors($object->getAuthors());
 

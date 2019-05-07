@@ -45,11 +45,7 @@ final class BookReferenceConverter implements ViewModelConverter
         $abstracts[] = new ViewModel\Link('Google Scholar', 'https://scholar.google.com/scholar_lookup?'.str_replace(['%5B0%5D=', '%5B1%5D='], '=', http_build_query($query)));
 
         // hack for missing date
-        if ($object->getDate()->getYear() > 1000) {
-            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
-        } else {
-            $authorsSuffix = [];
-        }
+        $authorsSuffix = $this->createAuthorsSuffix($object);
 
         if (empty($referenceAuthors) && empty($object->getEditors())) {
             $authors = [$this->createAuthors($object->getEditors(), $object->editorsEtAl(), [])];

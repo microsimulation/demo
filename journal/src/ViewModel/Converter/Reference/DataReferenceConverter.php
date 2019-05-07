@@ -27,11 +27,12 @@ final class DataReferenceConverter implements ViewModelConverter
         $year = true;
 
         // hack for missing date
-        if ($object->getDate()->getYear() > 1000) {
-            $yearSuffix = $object->getDate()->format().$object->getDiscriminator();
-        } else {
+        $authorsSuffix = $this->createAuthorsSuffix($object);
+        if (empty($authorsSuffix)) {
             $yearSuffix = '';
             $year = false;
+        } else {
+            $yearSuffix = $authorsSuffix[0];
         }
 
         if ($object->getCurators()) {

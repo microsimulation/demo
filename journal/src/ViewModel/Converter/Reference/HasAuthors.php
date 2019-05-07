@@ -42,6 +42,17 @@ trait HasAuthors
         return $authors;
     }
 
+    private function createAuthorsSuffix($object) : array
+    {
+        // hack for missing date, takes in a Reference object like BookReference, etc.
+        if ($object->getDate()->getYear() > 1000) {
+            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
+        } else {
+            $authorsSuffix = [];
+        }
+        return $authorsSuffix;
+    }
+
     private function pruneAuthors(array $authors) : array
     {
         // Hack to prune out group authors of name n/a used as a placeholder

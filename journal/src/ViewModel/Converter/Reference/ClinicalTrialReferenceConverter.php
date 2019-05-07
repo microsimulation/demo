@@ -16,6 +16,14 @@ final class ClinicalTrialReferenceConverter implements ViewModelConverter
     public function convert($object, string $viewModel = null, array $context = []) : ViewModel
     {
         // hack for missing date
+        $authorsSuffix = $this->createAuthorsSuffix($object);
+        if(empty($authorsSuffix))
+        {
+            $yearSuffix = '';
+        } else {
+            $yearSuffix = $authorsSuffix[0];
+        }
+
         if ($object->getDate()->getYear() > 1000) {
             $yearSuffix = $object->getDate()->format().$object->getDiscriminator();
         } else {

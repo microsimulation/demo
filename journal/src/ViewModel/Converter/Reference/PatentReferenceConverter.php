@@ -28,11 +28,7 @@ final class PatentReferenceConverter implements ViewModelConverter
         $origin[] = $object->getCountry();
 
         // hack for missing date
-        if ($object->getDate()->getYear() > 1000) {
-            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
-        } else {
-            $authorsSuffix = [];
-        }
+        $authorsSuffix = $this->createAuthorsSuffix($object);
 
         $authors = [$this->createAuthors($object->getInventors(), $object->inventorsEtAl(), $authorsSuffix)];
 

@@ -22,11 +22,8 @@ final class ConferenceProceedingReferenceConverter implements ViewModelConverter
         }
 
         // hack for missing date
-        if ($object->getDate()->getYear() > 1000) {
-            $authorsSuffix = [$object->getDate()->format().$object->getDiscriminator()];
-        } else {
-            $authorsSuffix = [];
-        }
+        $authorsSuffix = $this->createAuthorsSuffix($object);
+
         $referenceAuthors = $this->pruneAuthors($object->getAuthors());
 
         $authors = [$this->createAuthors($referenceAuthors, $object->authorsEtAl(), $authorsSuffix)];
