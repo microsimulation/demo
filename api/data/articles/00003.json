@@ -411,7 +411,7 @@
                             "type": "paragraph"
                         },
                         {
-                            "text": "Comparing <a href=\"#table1\">Table 1</a> with <a href=\"#table2\">Tables 2</a> (female white-collar workers) and <a href=\"#table3\">3</a> (male blue-collar workers) reveals that both the gross and net replacement rate are inversely related to income. There are two explanations for this. First, the increase of wage with age is higher for male white-collar workers than for female white-collar workers and blue-collar workers (see appendix). The average income will therefore be further below the last wage for the first category compared to the last two, and hence the difference in the replacement ratio. Second, as male white-collar workers have the highest income, the effect of the upper wage limit in the calculation of the wage-base (and therefore the pension) is more important, causing the replacement rate to be lower.",
+                            "text": "Comparing <a href=\"#table1\">Table 1</a> with <a href=\"#table2\">Tables 2</a> (female white-collar workers) and <a href=\"#table3\">3</a> (male blue-collar workers) reveals that both the gross and net replacement rate are inversely related to income. There are two explanations for this. First, the increase of wage with age is higher for male white-collar workers than for female white-collar workers and blue-collar workers (see <a href=\"#appendix-1\">appendix</a>). The average income will therefore be further below the last wage for the first category compared to the last two, and hence the difference in the replacement ratio. Second, as male white-collar workers have the highest income, the effect of the upper wage limit in the calculation of the wage-base (and therefore the pension) is more important, causing the replacement rate to be lower.",
                             "type": "paragraph"
                         },
                         {
@@ -1153,7 +1153,6 @@
         },
         {
             "bookTitle": "Praktijkboek Sociale Zekerheid voor de onderneming en de sociale adviseur",
-            "date": "1000",
             "editors": [
                 {
                     "name": {
@@ -1179,7 +1178,8 @@
                     "Ced.Samsom"
                 ]
             },
-            "type": "book"
+            "type": "book",
+            "date": "1000"
         },
         {
             "articleTitle": "Pensions, the Option Value of Work, and Retirement",
