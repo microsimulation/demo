@@ -88,14 +88,14 @@ final class HomeController extends Controller
         $arguments['contentHeader'] = new ContentHeader(
             'International Journal of Microsimulation',
             new ContentHeaderImage(
-                new Picture([], new Image($this->get('elife.assets.packages')->getUrl('assets/patterns/img/patterns/organisms/map-of-world.jpg')))
+                new Picture([], new Image($this->get('elife.assets.packages')->getUrl('assets/header.jpg')))
             )
         );
 
         $arguments['leadParas'] = new LeadParas(
             [
                 new LeadPara(
-                    'The International Journal of Microsimulation (IJM) is the official online peer-reviewed journal of the International Microsimulation Association',
+                    'The International Journal of Microsimulatrion (IJM) is the official online peer-reviewed journal of the International Microsimulation Association',
                     'strapline'
                 ),
             ]
