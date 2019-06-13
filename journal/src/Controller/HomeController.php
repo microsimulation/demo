@@ -95,7 +95,7 @@ final class HomeController extends Controller
         $arguments['leadParas'] = new LeadParas(
             [
                 new LeadPara(
-                    'The International Journal of Microsimulatrion (IJM) is the official online peer-reviewed journal of the International Microsimulation Association',
+                    'The International Journal of Microsimulation (IJM) is the official online peer-reviewed journal of the International Microsimulation Association',
                     'strapline'
                 ),
             ]
