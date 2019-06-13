@@ -8,36 +8,25 @@ about:
     defaults:
          _controller: AppBundle:About:about
 
-about-aims-scope:
-    path: /about/aims-scope
-    defaults:
-         _controller: AppBundle:About:aimsScope
-
-about-early-career:
-    path: /about/early-career
-    defaults:
-         _controller: AppBundle:About:earlyCareer
-
-about-innovation:
-    path: /about/notes-for-reviewers
-    defaults:
-         _controller: AppBundle:About:innovation
-
-about-openness:
-    path: /about/notes-for-authors
-    defaults:
-         _controller: AppBundle:About:openness
-
-about-peer-review:
-    path: /about/submission-policy
-    defaults:
-         _controller: AppBundle:About:peerReview
-
-about-people:
+about-board:
     path: /about/editorial-board
     defaults:
-         _controller: AppBundle:About:people
-         type: ''
+         _controller: AppBundle:About:board
+
+about-submission:
+    path: /about/submission-policy
+    defaults:
+         _controller: AppBundle:About:submissionPolicy
+
+about-authors:
+    path: /about/author-notes
+    defaults:
+         _controller: AppBundle:About:authorNotes
+
+about-reviewers:
+    path: /about/reviewer-notes
+    defaults:
+         _controller: AppBundle:About:reviewerNotes
 
 article-version:
     path: /articles/{id}v{version}
