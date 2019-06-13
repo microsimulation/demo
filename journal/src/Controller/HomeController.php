@@ -88,7 +88,9 @@ final class HomeController extends Controller
         $arguments['contentHeader'] = new ContentHeader(
             'International Journal of Microsimulation',
             new ContentHeaderImage(
-                new Picture([], new Image($this->get('elife.assets.packages')->getUrl('assets/header.jpg')))
+                new Picture([], new Image($this->get('elife.assets.packages')->getUrl('assets/header.jpg'))),
+                null,
+                true
             )
         );
 
